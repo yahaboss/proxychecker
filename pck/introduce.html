@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>api使用说明</title>
+		<style type="text/css">
+    		.table {
+    			width: 100%;
+    			margin-bottom: 20px;
+    		}
+    		table {
+    			max-width: 100%;
+    			display: table;
+    			background-color: transparent;
+    			border-collapse: collapse;
+    			border-spacing: 0;
+  					-webkit-border-horizontal-spacing: 0px;
+  					-webkit-border-vertical-spacing: 0px;
+    		}
+    	</style>
+	</head>
+	<body>
+		<h4>API参数说明</h4>
+		<table class="table" border="1">
+            <thead>
+                <tr>
+                    <th>参数名</th>
+                    <th>说明</th>
+                    <th>使用示例</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>number</td>
+                    <td>提取数量(可不填，默认20)</td>
+                    <td>/api?number=30</td>
+                </tr>
+                <tr>
+                    <td>port</td>
+                    <td>端口选择(不填则选择全部；多个端口用英文逗号,隔开)</td>
+                    <td>/api?port=80,8080</td>
+                </tr>
+                <tr>
+                    <td>remomvePort</td>
+                    <td>排除端口(不填则不排除；多个端口用英文逗号,隔开)</td>
+                    <td>/api?remomvePort=3128,8090</td>
+                </tr>
+                <tr>
+                    <td>region</td>
+                    <td>指定地区(不填则选择全部；多个地区用英文逗号,隔开)</td>
+                    <td>/api?region=上海,北京</td>
+                </tr>
+                <tr>
+                    <td>removeRegion</td>
+                    <td>排除地区(不填则不排除；多个地区用英文逗号,隔开)</td>
+                    <td>/api?removeRegion=美国,荷兰</td>
+                </tr>
+                <tr>
+                    <td>method</td>
+                    <td>是否支持get,post方法，直接填写get,post，多个方法用英文逗号,隔开(不填则选择全部)</td>
+                    <td>/api?method=get&nbsp;&nbsp;或者/api?method=post&nbsp;&nbsp;或者/api?method=get,post</td>
+                </tr>
+                <tr>
+                    <td>stability</td>
+                    <td>稳定性(不填则选择全部)
+                    </br>
+                        1表示：存在时间达25分钟以上，且平均响应时间在2s内为非常稳定
+                    </br>
+                        2表示：存在时间达25分钟以内，或者平均响应时间在2s以上为稳定</td>
+                    <td>/api?stability=1&nbsp;&nbsp;或者/api?stability=2&nbsp;&nbsp;或者/api?stability=1,2</td>
+                </tr>
+                <tr>
+                    <td>speed</td>
+                    <td>响应速度(不填则选择全部)
+                    </br>
+                        1表示：平均响应速度1s以内
+                    </br>
+                        2表示：平均响应速度在1~3s
+                    </br>
+                        3表示：平均响应速度在3s以上
+                    </td>
+                    <td>api?speed=1&nbsp;&nbsp;或者/api?speed=2&nbsp;&nbsp;或者/api?speed=1,2等等</td>
+                </tr>
+                <tr>
+                    <td>ipStart</td>
+                    <td>指定IP前缀，例如ipStart=117，则选择117开头的IP(不填则默认选择全部)</td>
+                    <td>api?ipStart=117</td>
+                </tr>
+                <tr>
+                    <td>todayIP</td>
+                    <td>过滤24小时内提取过的IP，1为过滤，0为不过滤(可不选，默认提取全部)</td>
+                    <td>api?todayIP=0</td>
+                </tr>
+                <tr>
+                    <td>sort</td>
+                    <td>是否对结果按平均响应时间从小到大排序，1为是，0为否</td>
+                    <td>api?sort=1</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>完整API：</p>
+        <p>/api?number=&amp;port=&amp;removePort=&amp;region=&amp;removeRegion=&amp;method=&amp;stability=&amp;speed=&amp;ipStart=&amp;todayIP=&amp;sort=
+        </br>
+        <p>示例API：</p>
+        <p>/api?number=50&amp;port=80,8080&amp;removePort=&amp;region=中国,美国&amp;removeRegion=&amp;method=1&amp;stability=1&amp;speed=1,2&amp;ipStart=&amp;todayIP=&amp;sort=1
+	</body>
+</html>
