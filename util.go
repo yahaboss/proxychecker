@@ -1,7 +1,7 @@
 package proxychecker
 
 import (
-//	"encoding/json"
+	//	"encoding/json"
 	"fmt"
 	"html/template"
 	"log"
