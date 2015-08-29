@@ -2,14 +2,14 @@ package proxychecker
 
 import (
 	"github.com/PuerkitoBio/goquery"
-	iconv "github.com/djimenez/iconv-go"
+	iconv "github.com/djimenez/iconv-go" //编码转换
 	"net"
 	"net/http"
 	"strings"
 	"time"
 )
 
-func GetProxyRegion(url string) string {
+func GetProxyRegion(url string) string { //得到IP的地区，从另一个网站爬的
 	c := &http.Client{
 		Transport: &http.Transport{
 			Dial: func(netw, addr string) (net.Conn, error) {

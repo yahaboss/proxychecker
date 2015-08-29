@@ -1,7 +1,7 @@
 package main
 
 import (
-	"git.bdp.cc/termite/proxychecker"
+	"proxychecker"
 	"net/http"
 )
 
@@ -14,5 +14,5 @@ func main() {
 	http.HandleFunc("/api", proxychecker.HandleAPI)
 	http.HandleFunc("/introduce", proxychecker.HandleIntroduce)
 	// ?number=&port=&removePort=&region=&removeRegion=&method=&stability=&speed=&ipStart=&todayIP=&sort=
-	http.ListenAndServe(":29840", nil)
+	http.ListenAndServe(":8080", nil)
 }

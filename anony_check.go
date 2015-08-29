@@ -6,7 +6,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -47,9 +46,9 @@ func NewProxyChecker() *ProxyChecker {
 	return ret
 }
 
-func check(link string) {
-	getOK, getSecs := CheckAnonyGet(link) //判断是否是代理ip
-	postOK, postSecs := CheckAnonyPost(link)
+func check(link string) { //判断是否是代理ip
+	getOK, getSecs := CheckAnonyGet(link) //验证代理IP是否支持get方法
+	postOK, postSecs := CheckAnonyPost(link) //验证代理IP是否支持post方法
 	if getOK || postOK {
 		log.Println("check ok: ", link)
 		ipPort := strings.Split(link, ":")
@@ -136,7 +135,7 @@ func check(link string) {
 	}
 }
 
-func crawler_CheckAll(i, j int) {
+func crawler_CheckAll(i, j int) { //验证爬取到的高匿名IP是滞可用且是否真的是高匿名IP
 	proxys := make(map[string]struct{})
 	var body *goquery.Document
 	var goqueryError error
@@ -188,7 +187,7 @@ func crawler_CheckAll(i, j int) {
 	}
 }
 
-func fetchAllProxys() {
+func fetchAllProxys() {  //爬取所有列出的网站
 	for i := 0; i <= 7; i++ {
 		// log.Printf("第 %d 个网址开始运行……", i)
 		if i <= 4 {
@@ -203,7 +202,7 @@ func fetchAllProxys() {
 	}
 }
 
-func Run() {
+func Run() {  //main函数入口Run方法运行爬虫
 	fetchUrl = make([]string, 10)
 	fetchUrl[0] = "http://www.kuaidaili.com/proxylist/"  //扫描10页
 	fetchUrl[1] = "http://www.nianshao.me/?page="        //扫描15页

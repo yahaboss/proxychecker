@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-const PROXY_CHECKER_SERVICE = "http://138.128.213.149:29840/check"
+const PROXY_CHECKER_SERVICE = "http://127.0.0.1/check"
 
 func CheckAnonyGet(proxyAddr string) (bool, float64) { //验证Get方法
 	start := time.Now()

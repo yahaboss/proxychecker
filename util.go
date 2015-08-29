@@ -23,6 +23,7 @@ type JsonProxy struct {
 
 type jproxy []JsonProxy
 
+//用于结构体排序的三个方法
 func (u jproxy) Len() int {
 	return len(u)
 }
@@ -35,7 +36,7 @@ func (u jproxy) Swap(i, j int) {
 	u[i], u[j] = u[j], u[i]
 }
 
-func HandleProxyChecker(w http.ResponseWriter, r *http.Request) {
+func HandleProxyChecker(w http.ResponseWriter, r *http.Request) { //判断是否是高匿名代理
 	r.ParseForm()
 	username, err := r.Form["username"]
 	if err == false {
@@ -52,7 +53,7 @@ func HandleProxyChecker(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func HandleIntroduce(w http.ResponseWriter, r *http.Request) {
+func HandleIntroduce(w http.ResponseWriter, r *http.Request) { //http服务，显示introduce.html页面
 	t, err := template.ParseFiles("introduce.html")
 	if err != nil {
 		log.Println(err)
@@ -60,7 +61,7 @@ func HandleIntroduce(w http.ResponseWriter, r *http.Request) {
 	t.Execute(w, nil)
 }
 
-func HandleGet(w http.ResponseWriter, r *http.Request) {
+func HandleGet(w http.ResponseWriter, r *http.Request) { //"/get"路径的http服务方法
 	copyCP := make(map[string]*Proxy)
 	PC.lock.Lock()
 	copyCP = PC.checkedProxys
@@ -79,7 +80,7 @@ func HandleGet(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func HandleAPI(w http.ResponseWriter, r *http.Request) {
+func HandleAPI(w http.ResponseWriter, r *http.Request) { //"/api"路径的http服务方法
 	params := r.URL.Query()
 	number := params.Get("number")
 	num := 0
