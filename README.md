@@ -1,2 +1,3 @@
 # proxychecker
-High Proxy IP
+##高匿名代理IP爬取
+通过对快代理等各网站爬取高匿名代理IP，形成API，方便以后爬虫可以通过这个API获取到免费的的高匿名代理可用。
